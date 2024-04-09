@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://decmnfhocn2s0"]
+[gd_scene load_steps=11 format=3 uid="uid://decmnfhocn2s0"]
 
 [ext_resource type="Texture2D" uid="uid://qktprtobhvvg" path="res://sprites/robot.png" id="1_h1wjn"]
 [ext_resource type="Script" path="res://sprites/CharacterBody2D.gd" id="1_iatr0"]
@@ -11,6 +11,21 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfr0b"]
 radius = 12.0
+
+[sub_resource type="GDScript" id="GDScript_11yc2"]
+script/source = "extends Bone2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void :
+	look_at(get_global_mouse_position())
+	
+"
 
 [node name="Node2D" type="Node2D"]
 
@@ -44,23 +59,26 @@ node_a = NodePath("..")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="CharacterBody2D"]
 
-[node name="Bone2D" type="Bone2D" parent="CharacterBody2D/Skeleton2D"]
+[node name="RightArmBone" type="Bone2D" parent="CharacterBody2D/Skeleton2D"]
+z_index = 1
 position = Vector2(12, 0)
 rest = Transform2D(1, 0, 0, 1, 12, 0)
+script = SubResource("GDScript_11yc2")
 
-[node name="Bone2D" type="Bone2D" parent="CharacterBody2D/Skeleton2D/Bone2D"]
+[node name="RightHandBone" type="Bone2D" parent="CharacterBody2D/Skeleton2D/RightArmBone"]
+visibility_layer = 4
 position = Vector2(13, 0)
 rest = Transform2D(1, 0, 0, 1, 13, 0)
 script = ExtResource("5_ekxnm")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/Bone2D/Bone2D"]
+[node name="RightHand" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/RightArmBone/RightHandBone"]
 texture_filter = 1
 position = Vector2(10, -0.5)
 texture = ExtResource("5_be5w1")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Skeleton2D"]
+[node name="RightArm" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/RightArmBone"]
 texture_filter = 1
-position = Vector2(19, 0)
+position = Vector2(7, 0)
 texture = ExtResource("5_e8h3v")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
