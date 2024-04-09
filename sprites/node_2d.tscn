@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://decmnfhocn2s0"]
+[gd_scene load_steps=12 format=3 uid="uid://decmnfhocn2s0"]
 
 [ext_resource type="Texture2D" uid="uid://qktprtobhvvg" path="res://sprites/robot.png" id="1_h1wjn"]
 [ext_resource type="Script" path="res://sprites/CharacterBody2D.gd" id="1_iatr0"]
@@ -7,12 +7,41 @@
 [ext_resource type="Script" path="res://sprites/Eye.gd" id="4_6w0oq"]
 [ext_resource type="Texture2D" uid="uid://dvcroq65oaqa6" path="res://sprites/arm3.png" id="5_be5w1"]
 [ext_resource type="Texture2D" uid="uid://bj4i783xgx7h2" path="res://sprites/middlearm.png" id="5_e8h3v"]
-[ext_resource type="Script" path="res://sprites/Bone2D.gd" id="5_ekxnm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfr0b"]
 radius = 12.0
 
-[sub_resource type="GDScript" id="GDScript_11yc2"]
+[sub_resource type="GDScript" id="GDScript_5gnxn"]
+script/source = "extends Bone2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void :
+	look_at(get_global_mouse_position())
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_4gwhp"]
+script/source = "extends Bone2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void :
+	look_at(get_global_mouse_position())
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_asn3e"]
 script/source = "extends Bone2D
 
 
@@ -59,27 +88,48 @@ node_a = NodePath("..")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="CharacterBody2D"]
 
-[node name="RightArmBone" type="Bone2D" parent="CharacterBody2D/Skeleton2D"]
-z_index = 1
-position = Vector2(12, 0)
-rest = Transform2D(1, 0, 0, 1, 12, 0)
-script = SubResource("GDScript_11yc2")
+[node name="Torso" type="Bone2D" parent="CharacterBody2D/Skeleton2D"]
+rotation = -1.575
+rest = Transform2D(-0.00420275, -0.999991, 0.999991, -0.00420275, 0, 0)
 
-[node name="RightHandBone" type="Bone2D" parent="CharacterBody2D/Skeleton2D/RightArmBone"]
-visibility_layer = 4
-position = Vector2(13, 0)
-rest = Transform2D(1, 0, 0, 1, 13, 0)
-script = ExtResource("5_ekxnm")
+[node name="RightArm" type="Bone2D" parent="CharacterBody2D/Skeleton2D/Torso"]
+position = Vector2(-0.0504331, 11.9999)
+rotation = 1.56707
+rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9999)
+auto_calculate_length_and_angle = false
+length = 12.0
+bone_angle = 0.454255
+script = SubResource("GDScript_5gnxn")
 
-[node name="RightHand" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/RightArmBone/RightHandBone"]
+[node name="RightArm" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm"]
 texture_filter = 1
-position = Vector2(10, -0.5)
-texture = ExtResource("5_be5w1")
-
-[node name="RightArm" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/RightArmBone"]
-texture_filter = 1
-position = Vector2(7, 0)
+position = Vector2(6.99978, 0.0554972)
+rotation = 0.00792825
 texture = ExtResource("5_e8h3v")
+
+[node name="Bone2D" type="Bone2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm"]
+position = Vector2(23.9992, 0.190276)
+rotation = 3.11192
+rest = Transform2D(-0.99956, 0.0296663, -0.0296663, -0.99956, 23.9992, 0.190276)
+auto_calculate_length_and_angle = false
+length = 8.0
+bone_angle = 2.15425
+script = SubResource("GDScript_4gwhp")
+
+[node name="Righthand" type="Bone2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm/Bone2D"]
+position = Vector2(7.99435, 0.30072)
+rotation = -3.14159
+rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+script = SubResource("GDScript_asn3e")
+
+[node name="RightHand" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm/Bone2D/Righthand"]
+texture_filter = 1
+position = Vector2(10.0037, -0.420703)
+rotation = 0.00792825
+texture = ExtResource("5_be5w1")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
