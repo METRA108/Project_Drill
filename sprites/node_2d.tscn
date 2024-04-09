@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://decmnfhocn2s0"]
+[gd_scene load_steps=12 format=3 uid="uid://decmnfhocn2s0"]
 
 [ext_resource type="Texture2D" uid="uid://qktprtobhvvg" path="res://sprites/robot.png" id="1_h1wjn"]
 [ext_resource type="Script" path="res://sprites/CharacterBody2D.gd" id="1_iatr0"]
@@ -11,32 +11,20 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfr0b"]
 radius = 12.0
 
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_62j2w"]
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_aui1m"]
 target_nodepath = NodePath("../../target")
-joint_one_bone_idx = 1
-joint_one_bone2d_node = NodePath("Torso/RightArm")
-joint_two_bone_idx = 2
-joint_two_bone2d_node = NodePath("Torso/RightArm/Righthand")
+fabrik_data_chain_length = 2
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Torso/RightArm")
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Torso/RightArm/Righthand")
+joint_data/1/magnet_position = Vector2(0.1, 0)
+joint_data/1/use_target_rotation = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_q77ho"]
 enabled = true
 modification_count = 1
-modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_62j2w")
-
-[sub_resource type="GDScript" id="GDScript_asn3e"]
-script/source = "extends Bone2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void :
-	look_at(get_global_mouse_position())
-	
-"
+modifications/0 = SubResource("SkeletonModification2DFABRIK_aui1m")
 
 [sub_resource type="GDScript" id="GDScript_m7nmu"]
 script/source = "extends Sprite2D
@@ -92,18 +80,18 @@ rotation = -1.264
 rest = Transform2D(-0.00420275, -0.999991, 0.999991, -0.00420275, 0, 0)
 
 [node name="RightArm" type="Bone2D" parent="CharacterBody2D/Skeleton2D/Torso"]
-position = Vector2(-0.0504331, 11.9999)
-rotation = 1.56707
+position = Vector2(-0.0504318, 11.9999)
+rotation = 1.55896
 rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9999)
 auto_calculate_length_and_angle = false
 length = 12.0
-bone_angle = 353.86
+bone_angle = 360.0
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RightArm" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm"]
 texture_filter = 1
-position = Vector2(6.99978, 0.0554972)
-rotation = 0.00792825
+position = Vector2(6.00226, -0.168383)
+rotation = 0.0040094
 texture = ExtResource("5_e8h3v")
 
 [node name="Righthand" type="Bone2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm"]
@@ -111,17 +99,16 @@ position = Vector2(13.4907, -0.619778)
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
 auto_calculate_length_and_angle = false
-length = 16.0
+length = 20.0
 bone_angle = 0.0
-script = SubResource("GDScript_asn3e")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RightHand" type="Sprite2D" parent="CharacterBody2D/Skeleton2D/Torso/RightArm/Righthand"]
 texture_filter = 1
-position = Vector2(10.0037, -0.420703)
-rotation = 0.00792825
+position = Vector2(11.0022, -0.10023)
+rotation = 0.00400914
+scale = Vector2(1, 1)
 texture = ExtResource("5_be5w1")
-offset = Vector2(0, 0.7)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -139,5 +126,5 @@ texture = ExtResource("2_dhq46")
 stretch_mode = 1
 
 [node name="target" type="Sprite2D" parent="."]
-position = Vector2(28, 9)
+position = Vector2(60, 0)
 script = SubResource("GDScript_m7nmu")
