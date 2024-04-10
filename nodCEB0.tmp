@@ -1,0 +1,192 @@
+[gd_scene load_steps=16 format=3 uid="uid://decmnfhocn2s0"]
+
+[ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
+[ext_resource type="Texture2D" uid="uid://qktprtobhvvg" path="res://scripts/sprites/robot.png" id="2_e7qj4"]
+[ext_resource type="Texture2D" uid="uid://bvbqxboyd1iny" path="res://scripts/sprites/green.png" id="3_l64ae"]
+[ext_resource type="Script" path="res://scripts/Eye.gd" id="4_14pbk"]
+[ext_resource type="Texture2D" uid="uid://bj4i783xgx7h2" path="res://scripts/sprites/middlearm.png" id="5_e1prr"]
+[ext_resource type="Texture2D" uid="uid://dvcroq65oaqa6" path="res://scripts/sprites/arm.png" id="6_0kd3q"]
+[ext_resource type="Script" path="res://scripts/RightHand.gd" id="7_vayx1"]
+[ext_resource type="Script" path="res://scripts/LeftHand.gd" id="8_a1j85"]
+[ext_resource type="Texture2D" uid="uid://d0yrxtfwq88ya" path="res://scripts/sprites/odun.PNG" id="9_mhqow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfr0b"]
+radius = 12.0
+
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_5mn40"]
+target_nodepath = NodePath("../../target")
+fabrik_data_chain_length = 2
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Torso/RightArmBone")
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Torso/RightArmBone/RightHandBone")
+joint_data/1/magnet_position = Vector2(-0.1, 0)
+joint_data/1/use_target_rotation = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_frbil"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DFABRIK_5mn40")
+
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_aui1m"]
+target_nodepath = NodePath("../../target")
+fabrik_data_chain_length = 2
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Torso/LeftArmBone")
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Torso/LeftArmBone/LeftHandBone")
+joint_data/1/magnet_position = Vector2(0.1, 0)
+joint_data/1/use_target_rotation = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_q77ho"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DFABRIK_aui1m")
+
+[sub_resource type="GDScript" id="GDScript_m7nmu"]
+script/source = "extends Sprite2D
+var mousepositoion
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	mousepositoion = get_local_mouse_position()
+	position+= mousepositoion
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody" type="CharacterBody2D" parent="."]
+script = ExtResource("1_4828s")
+
+[node name="Body" type="Sprite2D" parent="CharacterBody"]
+z_index = 10
+texture_filter = 1
+texture = ExtResource("2_e7qj4")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="CharacterBody"]
+shape = SubResource("CircleShape2D_tfr0b")
+
+[node name="BodyCamera" type="Camera2D" parent="CharacterBody"]
+zoom = Vector2(3.8, 3.8)
+
+[node name="Eye" type="Sprite2D" parent="CharacterBody"]
+texture_filter = 1
+texture = ExtResource("3_l64ae")
+script = ExtResource("4_14pbk")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="CharacterBody"]
+position = Vector2(12, 0)
+scale = Vector2(1.04348, 0.8)
+node_a = NodePath("..")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="CharacterBody"]
+position = Vector2(-12, 0)
+scale = Vector2(1.08885, 0.64)
+node_a = NodePath("..")
+
+[node name="LeftArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
+rotation = -0.294961
+modification_stack = SubResource("SkeletonModificationStack2D_frbil")
+
+[node name="Torso" type="Bone2D" parent="CharacterBody/LeftArmSkeleton"]
+rotation = 1.87797
+scale = Vector2(0.999992, 0.999992)
+rest = Transform2D(-0.00420275, -0.999991, 0.999991, -0.00420275, 0, 0)
+
+[node name="RightArmBone" type="Bone2D" parent="CharacterBody/LeftArmSkeleton/Torso"]
+position = Vector2(-0.0504259, 12)
+rotation = -1.58028
+scale = Vector2(0.999961, 0.999961)
+rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9999)
+auto_calculate_length_and_angle = false
+length = 12.0
+bone_angle = 360.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RightArm" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/RightArmBone"]
+texture_filter = 1
+position = Vector2(6.00226, -0.168383)
+rotation = 0.0040094
+texture = ExtResource("5_e1prr")
+
+[node name="RightHandBone" type="Bone2D" parent="CharacterBody/LeftArmSkeleton/Torso/RightArmBone"]
+position = Vector2(12, 3.03984e-06)
+rotation = -1.37175e-05
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
+auto_calculate_length_and_angle = false
+length = 24.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RightHand" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/RightArmBone/RightHandBone"]
+z_index = 11
+texture_filter = 1
+position = Vector2(11.0022, -0.10023)
+rotation = 0.00400914
+texture = ExtResource("6_0kd3q")
+script = ExtResource("7_vayx1")
+
+[node name="RightArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
+rotation = -0.294961
+modification_stack = SubResource("SkeletonModificationStack2D_q77ho")
+
+[node name="Torso" type="Bone2D" parent="CharacterBody/RightArmSkeleton"]
+rotation = -1.264
+rest = Transform2D(-0.00420275, -0.999991, 0.999991, -0.00420275, 0, 0)
+
+[node name="LeftArmBone" type="Bone2D" parent="CharacterBody/RightArmSkeleton/Torso"]
+position = Vector2(-0.0504318, 11.9999)
+rotation = 1.55896
+rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9999)
+auto_calculate_length_and_angle = false
+length = 12.0
+bone_angle = 360.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="LeftArm" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/LeftArmBone"]
+texture_filter = 1
+position = Vector2(6.00226, -0.168383)
+rotation = 0.0040094
+texture = ExtResource("5_e1prr")
+
+[node name="LeftHandBone" type="Bone2D" parent="CharacterBody/RightArmSkeleton/Torso/LeftArmBone"]
+position = Vector2(13.4907, -0.619778)
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
+auto_calculate_length_and_angle = false
+length = 24.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="LeftHand" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/LeftArmBone/LeftHandBone"]
+z_index = 11
+texture_filter = 1
+position = Vector2(11.0022, -0.10023)
+rotation = 0.00400914
+texture = ExtResource("6_0kd3q")
+script = ExtResource("8_a1j85")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+show_behind_parent = true
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -203.0
+offset_right = 248.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_mhqow")
+stretch_mode = 1
+
+[node name="target" type="Sprite2D" parent="."]
+position = Vector2(60, 0)
+script = SubResource("GDScript_m7nmu")
