@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://decmnfhocn2s0"]
+[gd_scene load_steps=17 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Texture2D" uid="uid://qktprtobhvvg" path="res://sprites/robot.png" id="2_e7qj4"]
+[ext_resource type="Script" path="res://BodyCamera.gd" id="3_4xr8m"]
 [ext_resource type="Texture2D" uid="uid://bvbqxboyd1iny" path="res://sprites/green_eye.png" id="3_l64ae"]
 [ext_resource type="Script" path="res://scripts/Eye.gd" id="4_14pbk"]
 [ext_resource type="Texture2D" uid="uid://bj4i783xgx7h2" path="res://sprites/middlearm.png" id="5_e1prr"]
@@ -73,9 +74,10 @@ shape = SubResource("CircleShape2D_tfr0b")
 
 [node name="BodyCamera" type="Camera2D" parent="CharacterBody"]
 zoom = Vector2(3.8, 3.8)
+script = ExtResource("3_4xr8m")
 
 [node name="Eye" type="Sprite2D" parent="CharacterBody"]
-z_index = 12
+z_index = 10
 texture_filter = 1
 texture = ExtResource("3_l64ae")
 script = ExtResource("4_14pbk")
