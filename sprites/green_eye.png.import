@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvcroq65oaqa6"
-path="res://.godot/imported/arm3.png-467ed09602dd8a1e6bc3bdee218aca09.ctex"
+uid="uid://bvbqxboyd1iny"
+path="res://.godot/imported/green_eye.png-d78f834c978613ce86b8d01edbe9b4ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/arm3.png"
-dest_files=["res://.godot/imported/arm3.png-467ed09602dd8a1e6bc3bdee218aca09.ctex"]
+source_file="res://sprites/green_eye.png"
+dest_files=["res://.godot/imported/green_eye.png-d78f834c978613ce86b8d01edbe9b4ae.ctex"]
 
 [params]
 
