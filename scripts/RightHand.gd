@@ -10,7 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		get_node("/root/Node2D/CharacterBody/LeftArmSkeleton/Torso/RightArmBone/RightHandBone/RightHand").set_texture(on)
+		get_node("/root/Node2D/CharacterBody/RightArmSkeleton/Torso/RightArmBone/RightHandBone/RightHand").set_texture(on)
 		
 	else:
-		get_node("/root/Node2D/CharacterBody/LeftArmSkeleton/Torso/RightArmBone/RightHandBone/RightHand").set_texture(off)
+		get_node("/root/Node2D/CharacterBody/RightArmSkeleton/Torso/RightArmBone/RightHandBone/RightHand").set_texture(off)

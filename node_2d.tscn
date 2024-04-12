@@ -93,32 +93,32 @@ position = Vector2(-12, 0)
 scale = Vector2(1.08885, 0.64)
 node_a = NodePath("..")
 
-[node name="LeftArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
+[node name="RightArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
 rotation = -0.294961
 modification_stack = SubResource("SkeletonModificationStack2D_frbil")
 
-[node name="Torso" type="Bone2D" parent="CharacterBody/LeftArmSkeleton"]
-rotation = 1.87797
-scale = Vector2(0.999992, 0.999992)
+[node name="Torso" type="Bone2D" parent="CharacterBody/RightArmSkeleton"]
+rotation = -1.26362
+scale = Vector2(0.999988, 0.999988)
 rest = Transform2D(-0.00420275, -0.999991, 0.999991, -0.00420275, 0, 0)
 
-[node name="RightArmBone" type="Bone2D" parent="CharacterBody/LeftArmSkeleton/Torso"]
+[node name="RightArmBone" type="Bone2D" parent="CharacterBody/RightArmSkeleton/Torso"]
 position = Vector2(-0.0504259, 12)
-rotation = -1.58028
-scale = Vector2(0.999961, 0.999961)
+rotation = -1.58027
+scale = Vector2(0.999934, 0.999934)
 rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9999)
 auto_calculate_length_and_angle = false
 length = 12.0
 bone_angle = 360.0
 metadata/_local_pose_override_enabled_ = true
 
-[node name="RightArm" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/RightArmBone"]
+[node name="RightArm" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone"]
 texture_filter = 1
 position = Vector2(6.00226, -0.168383)
 rotation = 0.0040094
 texture = ExtResource("5_e1prr")
 
-[node name="RightHandBone" type="Bone2D" parent="CharacterBody/LeftArmSkeleton/Torso/RightArmBone"]
+[node name="RightHandBone" type="Bone2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone"]
 position = Vector2(12, 3.03984e-06)
 rotation = -1.37175e-05
 scale = Vector2(0.999999, 0.999999)
@@ -128,7 +128,7 @@ length = 24.0
 bone_angle = 0.0
 metadata/_local_pose_override_enabled_ = true
 
-[node name="RightHand" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/RightArmBone/RightHandBone"]
+[node name="RightHand" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone/RightHandBone"]
 z_index = 11
 texture_filter = 1
 position = Vector2(11.0022, -0.10023)
@@ -136,15 +136,15 @@ rotation = 0.00400914
 texture = ExtResource("6_0kd3q")
 script = ExtResource("7_vayx1")
 
-[node name="RightArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
+[node name="LeftArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
 rotation = -0.294961
 modification_stack = SubResource("SkeletonModificationStack2D_q77ho")
 
-[node name="Torso" type="Bone2D" parent="CharacterBody/RightArmSkeleton"]
-rotation = -1.264
+[node name="Torso" type="Bone2D" parent="CharacterBody/LeftArmSkeleton"]
+rotation = 1.87797
 rest = Transform2D(-0.00420275, -0.999991, 0.999991, -0.00420275, 0, 0)
 
-[node name="LeftArmBone" type="Bone2D" parent="CharacterBody/RightArmSkeleton/Torso"]
+[node name="LeftArmBone" type="Bone2D" parent="CharacterBody/LeftArmSkeleton/Torso"]
 position = Vector2(-0.0504318, 11.9999)
 rotation = 1.55896
 rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9999)
@@ -153,13 +153,13 @@ length = 12.0
 bone_angle = 360.0
 metadata/_local_pose_override_enabled_ = true
 
-[node name="LeftArm" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/LeftArmBone"]
+[node name="LeftArm" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone"]
 texture_filter = 1
 position = Vector2(6.00226, -0.168383)
 rotation = 0.0040094
 texture = ExtResource("5_e1prr")
 
-[node name="LeftHandBone" type="Bone2D" parent="CharacterBody/RightArmSkeleton/Torso/LeftArmBone"]
+[node name="LeftHandBone" type="Bone2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone"]
 position = Vector2(13.4907, -0.619778)
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
@@ -168,7 +168,7 @@ length = 24.0
 bone_angle = 0.0
 metadata/_local_pose_override_enabled_ = true
 
-[node name="LeftHand" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/LeftArmBone/LeftHandBone"]
+[node name="LeftHand" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone/LeftHandBone"]
 z_index = 11
 texture_filter = 1
 position = Vector2(11.0022, -0.10023)
