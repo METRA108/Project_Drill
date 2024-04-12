@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvfe6u2yt0rbr"]
+[gd_scene load_steps=31 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Texture2D" uid="uid://qktprtobhvvg" path="res://sprites/robot.png" id="2_e7qj4"]
@@ -10,6 +10,11 @@
 [ext_resource type="Script" path="res://scripts/RightHand.gd" id="7_vayx1"]
 [ext_resource type="Script" path="res://scripts/LeftHand.gd" id="8_a1j85"]
 [ext_resource type="Texture2D" uid="uid://d0yrxtfwq88ya" path="res://sprites/odun.PNG" id="9_mhqow"]
+[ext_resource type="Texture2D" uid="uid://17prmk120ufc" path="res://sprites/RobotLeg.png" id="10_88g3j"]
+[ext_resource type="Texture2D" uid="uid://csybam6dom1na" path="res://sprites/RobotLegStop.png" id="11_mjh1y"]
+[ext_resource type="Script" path="res://AnimatedSprite2D.gd" id="11_yqkc0"]
+[ext_resource type="Texture2D" uid="uid://ltv0opnj6wcl" path="res://sprites/RobotFrontLeg.png" id="12_5bbu6"]
+[ext_resource type="Script" path="res://LegFrontAnim.gd" id="12_s05gl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfr0b"]
 radius = 12.0
@@ -44,6 +49,76 @@ enabled = true
 modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DFABRIK_aui1m")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxlb2"]
+atlas = ExtResource("10_88g3j")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3bjj"]
+atlas = ExtResource("10_88g3j")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mj8k"]
+atlas = ExtResource("10_88g3j")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip4a4"]
+atlas = ExtResource("11_mjh1y")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1nw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxlb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3bjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mj8k")
+}],
+"loop": true,
+"name": &"leganim",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip4a4")
+}],
+"loop": true,
+"name": &"legstop",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_428e0"]
+atlas = ExtResource("12_5bbu6")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov58y"]
+atlas = ExtResource("12_5bbu6")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veccf"]
+atlas = ExtResource("12_5bbu6")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jkls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_428e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov58y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veccf")
+}],
+"loop": true,
+"name": &"legfrontalanim",
+"speed": 10.0
+}]
+
 [sub_resource type="GDScript" id="GDScript_m7nmu"]
 script/source = "extends Sprite2D
 var mousePosition
@@ -77,16 +152,16 @@ shape = SubResource("CircleShape2D_tfr0b")
 zoom = Vector2(3, 3)
 script = ExtResource("3_4xr8m")
 
+[node name="PinJoint2D" type="PinJoint2D" parent="CharacterBody"]
+position = Vector2(12, 0)
+scale = Vector2(1.04348, 0.8)
+node_a = NodePath("..")
+
 [node name="Eye" type="Sprite2D" parent="CharacterBody"]
 z_index = 10
 texture_filter = 1
 texture = ExtResource("3_l64ae")
 script = ExtResource("4_14pbk")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="CharacterBody"]
-position = Vector2(12, 0)
-scale = Vector2(1.04348, 0.8)
-node_a = NodePath("..")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="CharacterBody"]
 position = Vector2(-12, 0)
@@ -176,8 +251,25 @@ rotation = 0.00400914
 texture = ExtResource("6_0kd3q")
 script = ExtResource("8_a1j85")
 
+[node name="LegAnim" type="AnimatedSprite2D" parent="CharacterBody"]
+z_index = -20
+texture_filter = 1
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_b1nw5")
+animation = &"legstop"
+script = ExtResource("11_yqkc0")
+
+[node name="LegFrontAnim" type="AnimatedSprite2D" parent="CharacterBody"]
+z_index = 11
+texture_filter = 1
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_1jkls")
+animation = &"legfrontalanim"
+script = ExtResource("12_s05gl")
+
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
+z_index = -4096
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
