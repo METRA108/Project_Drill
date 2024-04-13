@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvfe6u2yt0rbr"]
+[gd_scene load_steps=36 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Resource" uid="uid://clfflo0etune3" path="res://inventory/InventoryPlayer.tres" id="2_6bfvy"]
@@ -17,7 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://ltv0opnj6wcl" path="res://sprites/RobotFrontLeg.png" id="12_5bbu6"]
 [ext_resource type="Script" path="res://LegFrontAnim.gd" id="12_s05gl"]
 [ext_resource type="PackedScene" uid="uid://cw4hr2hb4roat" path="res://inventory/inv_ui.tscn" id="16_otd86"]
-[ext_resource type="PackedScene" uid="uid://doe7d7kc78s5c" path="res://inventory/area_2d.tscn" id="17_cbv0v"]
+[ext_resource type="Resource" uid="uid://cgdxi2atkak3f" path="res://inventory/Items/Item.tres" id="19_5abry"]
+[ext_resource type="Texture2D" uid="uid://c7r0k74l0hdq2" path="res://sprites/InvItem.png" id="20_yk2a7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfr0b"]
+radius = 12.0
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_5mn40"]
 target_nodepath = NodePath("../../target")
@@ -119,8 +123,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sm8ir"]
-
 [sub_resource type="GDScript" id="GDScript_m7nmu"]
 script/source = "extends Sprite2D
 var mousePosition
@@ -137,6 +139,20 @@ func _process(_delta):
 	position+= mousePosition
 "
 
+[sub_resource type="GDScript" id="GDScript_t7lnk"]
+script/source = "extends Node2D
+@export var item: InvItem
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody" type="CharacterBody2D" parent="."]
@@ -147,6 +163,9 @@ inv = ExtResource("2_6bfvy")
 z_index = 10
 texture_filter = 1
 texture = ExtResource("2_e7qj4")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="CharacterBody"]
+shape = SubResource("CircleShape2D_tfr0b")
 
 [node name="BodyCamera" type="Camera2D" parent="CharacterBody"]
 zoom = Vector2(3, 3)
@@ -269,9 +288,6 @@ offset_top = 33.0
 offset_right = 127.0
 offset_bottom = 117.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody"]
-shape = SubResource("CircleShape2D_sm8ir")
-
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
 z_index = -4096
@@ -292,8 +308,11 @@ stretch_mode = 1
 position = Vector2(60, 0)
 script = SubResource("GDScript_m7nmu")
 
-[node name="item" parent="." instance=ExtResource("17_cbv0v")]
-position = Vector2(-119, 0)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-149, -8)
+script = SubResource("GDScript_t7lnk")
+item = ExtResource("19_5abry")
 
-[node name="item2" parent="." instance=ExtResource("17_cbv0v")]
-position = Vector2(-101, -47)
+[node name="spr" type="Sprite2D" parent="Node2D"]
+rotation = 0.837758
+texture = ExtResource("20_yk2a7")

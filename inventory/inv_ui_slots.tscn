@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkbaxe6wffrdv"]
+
+[ext_resource type="Texture2D" uid="uid://p7pfqb0i5y4p" path="res://sprites/InvSlot.png" id="1_f4lrq"]
+[ext_resource type="Script" path="res://inventory/inv_ui_slots.gd" id="1_t6g3p"]
+
+[node name="InvUISlots" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("1_t6g3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_f4lrq")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+texture_filter = 1
+texture_repeat = 2
+custom_minimum_size = Vector2(188, 23)
+layout_mode = 0
+offset_left = -84.0
+offset_right = 104.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "2352
+"
+horizontal_alignment = 2

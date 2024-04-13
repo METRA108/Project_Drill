@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvfe6u2yt0rbr"]
+[gd_scene load_steps=33 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Resource" uid="uid://clfflo0etune3" path="res://inventory/InventoryPlayer.tres" id="2_6bfvy"]
@@ -118,8 +118,6 @@ animations = [{
 "name": &"legfrontalanim",
 "speed": 10.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sm8ir"]
 
 [sub_resource type="GDScript" id="GDScript_m7nmu"]
 script/source = "extends Sprite2D
@@ -269,8 +267,8 @@ offset_top = 33.0
 offset_right = 127.0
 offset_bottom = 117.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody"]
-shape = SubResource("CircleShape2D_sm8ir")
+[node name="item" parent="CharacterBody" instance=ExtResource("17_cbv0v")]
+position = Vector2(-119, 0)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -291,9 +289,3 @@ stretch_mode = 1
 [node name="target" type="Sprite2D" parent="."]
 position = Vector2(60, 0)
 script = SubResource("GDScript_m7nmu")
-
-[node name="item" parent="." instance=ExtResource("17_cbv0v")]
-position = Vector2(-119, 0)
-
-[node name="item2" parent="." instance=ExtResource("17_cbv0v")]
-position = Vector2(-101, -47)

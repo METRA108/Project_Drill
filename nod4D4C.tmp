@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvfe6u2yt0rbr"]
+[gd_scene load_steps=32 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Resource" uid="uid://clfflo0etune3" path="res://inventory/InventoryPlayer.tres" id="2_6bfvy"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://ltv0opnj6wcl" path="res://sprites/RobotFrontLeg.png" id="12_5bbu6"]
 [ext_resource type="Script" path="res://LegFrontAnim.gd" id="12_s05gl"]
 [ext_resource type="PackedScene" uid="uid://cw4hr2hb4roat" path="res://inventory/inv_ui.tscn" id="16_otd86"]
-[ext_resource type="PackedScene" uid="uid://doe7d7kc78s5c" path="res://inventory/area_2d.tscn" id="17_cbv0v"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_5mn40"]
 target_nodepath = NodePath("../../target")
@@ -118,8 +117,6 @@ animations = [{
 "name": &"legfrontalanim",
 "speed": 10.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sm8ir"]
 
 [sub_resource type="GDScript" id="GDScript_m7nmu"]
 script/source = "extends Sprite2D
@@ -269,9 +266,6 @@ offset_top = 33.0
 offset_right = 127.0
 offset_bottom = 117.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody"]
-shape = SubResource("CircleShape2D_sm8ir")
-
 [node name="TextureRect2" type="TextureRect" parent="."]
 show_behind_parent = true
 z_index = -4096
@@ -291,9 +285,3 @@ stretch_mode = 1
 [node name="target" type="Sprite2D" parent="."]
 position = Vector2(60, 0)
 script = SubResource("GDScript_m7nmu")
-
-[node name="item" parent="." instance=ExtResource("17_cbv0v")]
-position = Vector2(-119, 0)
-
-[node name="item2" parent="." instance=ExtResource("17_cbv0v")]
-position = Vector2(-101, -47)

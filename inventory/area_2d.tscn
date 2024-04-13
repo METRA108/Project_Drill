@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://doe7d7kc78s5c"]
+
+[ext_resource type="Script" path="res://Area2D.gd" id="1_hhtqf"]
+[ext_resource type="Resource" uid="uid://cgdxi2atkak3f" path="res://inventory/Items/Item.tres" id="2_cjoqo"]
+[ext_resource type="Texture2D" uid="uid://c7r0k74l0hdq2" path="res://sprites/InvItem.png" id="2_fd0ff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwbpl"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_hhtqf")
+item = ExtResource("2_cjoqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fd0ff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cwbpl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

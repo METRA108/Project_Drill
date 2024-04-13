@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_D):
 		play("legfrontalanim")
 	else:
