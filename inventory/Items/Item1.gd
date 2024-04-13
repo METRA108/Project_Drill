@@ -15,5 +15,5 @@ func _on_area_entered(area):
 	if area.has_method("pickable"):
 		player = area
 		player.collect(item)
-		queue_free()
+		self.queue_free()
 

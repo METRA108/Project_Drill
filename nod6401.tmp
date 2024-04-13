@@ -82,9 +82,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0mj8k")
 }],
-"loop": false,
+"loop": true,
 "name": &"leganim",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -119,9 +119,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_veccf")
 }],
-"loop": false,
+"loop": true,
 "name": &"legfrontalanim",
-"speed": 9.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sm8ir"]
@@ -190,6 +190,7 @@ rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9
 auto_calculate_length_and_angle = false
 length = 12.0
 bone_angle = 360.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RightArm" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone"]
 texture_filter = 1
@@ -205,6 +206,7 @@ rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
 auto_calculate_length_and_angle = false
 length = 24.0
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RightHand" type="Sprite2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone/RightHandBone"]
 z_index = 11
@@ -237,6 +239,7 @@ rest = Transform2D(0.00372548, 0.999993, -0.999993, 0.00372548, -0.0504331, 11.9
 auto_calculate_length_and_angle = false
 length = 12.0
 bone_angle = 360.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LeftArm" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone"]
 texture_filter = 1
@@ -251,6 +254,7 @@ rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 5.99576, 0.22554)
 auto_calculate_length_and_angle = false
 length = 24.0
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LeftHand" type="Sprite2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone/LeftHandBone"]
 z_index = 11
@@ -285,18 +289,10 @@ animation = &"legfrontalanim"
 script = ExtResource("12_s05gl")
 
 [node name="InvUI" parent="CharacterBody" instance=ExtResource("16_otd86")]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -111.5
-offset_top = 40.0
-offset_right = 111.5
-offset_bottom = 119.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -125.0
+offset_top = 33.0
+offset_right = 127.0
+offset_bottom = 117.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody"]
 shape = SubResource("CircleShape2D_sm8ir")

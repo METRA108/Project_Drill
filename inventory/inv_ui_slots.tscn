@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://inventory/inv_ui_slots.gd" id="1_t6g3p"]
 
 [node name="InvUISlots" type="Panel"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(24, 24)
 offset_right = 24.0
 offset_bottom = 24.0
