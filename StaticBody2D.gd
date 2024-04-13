@@ -1,6 +1,5 @@
-extends Area2D
-@export var item = InvItem
-var player = null
+extends StaticBody2D
+@export var inv: Inv
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,9 +9,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_body_entered(body):
-	player = body
-	player.collect(item)
-	queue_free()
+func collect(item):
+	inv.insert(item)

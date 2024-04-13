@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvfe6u2yt0rbr"]
+[gd_scene load_steps=37 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Resource" uid="uid://clfflo0etune3" path="res://inventory/InventoryPlayer.tres" id="2_6bfvy"]
@@ -13,11 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://d0yrxtfwq88ya" path="res://sprites/odun.PNG" id="9_mhqow"]
 [ext_resource type="Texture2D" uid="uid://17prmk120ufc" path="res://sprites/RobotLeg.png" id="10_88g3j"]
 [ext_resource type="Texture2D" uid="uid://csybam6dom1na" path="res://sprites/RobotLegStop.png" id="11_mjh1y"]
+[ext_resource type="Script" path="res://inventory/Area2D.gd" id="11_xiu7r"]
 [ext_resource type="Script" path="res://AnimatedSprite2D.gd" id="11_yqkc0"]
 [ext_resource type="Texture2D" uid="uid://ltv0opnj6wcl" path="res://sprites/RobotFrontLeg.png" id="12_5bbu6"]
 [ext_resource type="Script" path="res://LegFrontAnim.gd" id="12_s05gl"]
 [ext_resource type="PackedScene" uid="uid://cw4hr2hb4roat" path="res://inventory/inv_ui.tscn" id="16_otd86"]
 [ext_resource type="PackedScene" uid="uid://doe7d7kc78s5c" path="res://inventory/area_2d.tscn" id="17_cbv0v"]
+[ext_resource type="PackedScene" uid="uid://ceqttnwp32euv" path="res://inventory/Items/item_2.tscn" id="19_dngw4"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_5mn40"]
 target_nodepath = NodePath("../../target")
@@ -33,6 +35,9 @@ joint_data/1/use_target_rotation = false
 enabled = true
 modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DFABRIK_5mn40")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hr2d6"]
+radius = 4.52931
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_aui1m"]
 target_nodepath = NodePath("../../target")
@@ -209,6 +214,14 @@ rotation = 0.00400914
 texture = ExtResource("6_0kd3q")
 script = ExtResource("7_vayx1")
 
+[node name="RightHandArea" type="Area2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone/RightHandBone"]
+script = ExtResource("11_xiu7r")
+inv = ExtResource("2_6bfvy")
+
+[node name="RightHandCollision" type="CollisionShape2D" parent="CharacterBody/RightArmSkeleton/Torso/RightArmBone/RightHandBone/RightHandArea"]
+position = Vector2(20, 0)
+shape = SubResource("CircleShape2D_hr2d6")
+
 [node name="LeftArmSkeleton" type="Skeleton2D" parent="CharacterBody"]
 rotation = -0.294961
 modification_stack = SubResource("SkeletonModificationStack2D_q77ho")
@@ -246,6 +259,14 @@ position = Vector2(11.0022, -0.10023)
 rotation = 0.00400914
 texture = ExtResource("6_0kd3q")
 script = ExtResource("8_a1j85")
+
+[node name="LeftHandArea" type="Area2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone/LeftHandBone"]
+script = ExtResource("11_xiu7r")
+inv = ExtResource("2_6bfvy")
+
+[node name="LeftHandCollision" type="CollisionShape2D" parent="CharacterBody/LeftArmSkeleton/Torso/LeftArmBone/LeftHandBone/LeftHandArea"]
+position = Vector2(20, 0)
+shape = SubResource("CircleShape2D_hr2d6")
 
 [node name="LegAnim" type="AnimatedSprite2D" parent="CharacterBody"]
 z_index = -20
@@ -339,3 +360,11 @@ position = Vector2(-158, -129)
 
 [node name="item16" parent="." instance=ExtResource("17_cbv0v")]
 position = Vector2(-140, -176)
+
+[node name="Item2" parent="." instance=ExtResource("19_dngw4")]
+z_index = 55
+position = Vector2(-67, -8)
+
+[node name="Item3" parent="." instance=ExtResource("19_dngw4")]
+z_index = 55
+position = Vector2(44, -44)
