@@ -297,3 +297,45 @@ position = Vector2(-119, 0)
 
 [node name="item2" parent="." instance=ExtResource("17_cbv0v")]
 position = Vector2(-101, -47)
+
+[node name="item3" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-170, -21)
+
+[node name="item4" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-152, -68)
+
+[node name="item5" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-20, -35)
+
+[node name="item6" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-2, -82)
+
+[node name="item7" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-71, -56)
+
+[node name="item8" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-53, -103)
+
+[node name="item9" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-206, -73)
+
+[node name="item10" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-188, -120)
+
+[node name="item11" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-257, -94)
+
+[node name="item12" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-239, -141)
+
+[node name="item13" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-107, -108)
+
+[node name="item14" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-89, -155)
+
+[node name="item15" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-158, -129)
+
+[node name="item16" parent="." instance=ExtResource("17_cbv0v")]
+position = Vector2(-140, -176)
