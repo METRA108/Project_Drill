@@ -1,7 +1,7 @@
 extends Camera2D
 
 
-const Dead_Zone = 20
+const Dead_Zone = 15
 
 
 func _input(event: InputEvent) -> void:
@@ -10,4 +10,4 @@ func _input(event: InputEvent) -> void:
 		if _target.length() < Dead_Zone:
 			self.position = Vector2(0,0)
 		else:
-			self.position = _target.normalized() * (_target.length() -  Dead_Zone) * 0.1
+			self.position = _target.normalized() * (_target.length() -  Dead_Zone) * 0.05
