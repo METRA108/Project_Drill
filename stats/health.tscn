@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm6cu62ct7wby"]
+
+[ext_resource type="Texture2D" uid="uid://be08gb3kgpwif" path="res://sprites/hart.png" id="1_ci1kr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Healthbar" type="Panel" parent="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Healthbar"]
+texture_filter = 1
+position = Vector2(21, 22)
+scale = Vector2(2.04167, 2.04167)
+texture = ExtResource("1_ci1kr")
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/Healthbar"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 6.0
+offset_right = 134.0
+offset_bottom = 33.0
+value = 100.0

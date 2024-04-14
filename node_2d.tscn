@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvfe6u2yt0rbr"]
+[gd_scene load_steps=38 format=3 uid="uid://bvfe6u2yt0rbr"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_4828s"]
 [ext_resource type="Resource" uid="uid://clfflo0etune3" path="res://inventory/InventoryPlayer.tres" id="2_6bfvy"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://LegFrontAnim.gd" id="12_s05gl"]
 [ext_resource type="PackedScene" uid="uid://cw4hr2hb4roat" path="res://inventory/inv_ui.tscn" id="16_otd86"]
 [ext_resource type="PackedScene" uid="uid://doe7d7kc78s5c" path="res://inventory/area_2d.tscn" id="17_cbv0v"]
+[ext_resource type="PackedScene" uid="uid://bm6cu62ct7wby" path="res://stats/health.tscn" id="18_204ej"]
 [ext_resource type="PackedScene" uid="uid://ceqttnwp32euv" path="res://inventory/Items/item_2.tscn" id="19_dngw4"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_5mn40"]
@@ -156,6 +157,14 @@ texture = ExtResource("2_e7qj4")
 [node name="BodyCamera" type="Camera2D" parent="CharacterBody"]
 zoom = Vector2(3, 3)
 script = ExtResource("3_4xr8m")
+
+[node name="HealthUI" parent="CharacterBody/BodyCamera" instance=ExtResource("18_204ej")]
+z_index = 31
+offset_left = -187.0
+offset_top = -102.0
+offset_right = -187.0
+offset_bottom = -102.0
+scale = Vector2(0.520001, 0.520001)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="CharacterBody"]
 position = Vector2(12, 0)
@@ -308,10 +317,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -822.0
-offset_top = -489.0
-offset_right = 1052.0
-offset_bottom = 540.0
+offset_left = -821.0
+offset_top = -497.0
+offset_right = 1053.0
+offset_bottom = 532.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_mhqow")
