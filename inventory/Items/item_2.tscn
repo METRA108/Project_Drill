@@ -12,6 +12,7 @@ script = ExtResource("1_3r6x5")
 item = ExtResource("2_cb5cs")
 
 [node name="ItemSpr2" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_xnl6a")
 
 [node name="ItemCollision2" type="CollisionShape2D" parent="."]

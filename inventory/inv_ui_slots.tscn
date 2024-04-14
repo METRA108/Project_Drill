@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkbaxe6wffrdv"]
+[gd_scene load_steps=4 format=3 uid="uid://bkbaxe6wffrdv"]
 
 [ext_resource type="Texture2D" uid="uid://p7pfqb0i5y4p" path="res://sprites/InvSlot.png" id="1_f4lrq"]
 [ext_resource type="Script" path="res://inventory/inv_ui_slots.gd" id="1_t6g3p"]
+[ext_resource type="Script" path="res://inventory/ItemDisplay.gd" id="3_i616h"]
 
 [node name="InvUISlots" type="Panel"]
 custom_minimum_size = Vector2(24, 24)
@@ -24,6 +25,7 @@ offset_bottom = 24.0
 layout_mode = 2
 
 [node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+script = ExtResource("3_i616h")
 
 [node name="Label" type="Label" parent="CenterContainer/Panel"]
 texture_filter = 1
@@ -37,3 +39,5 @@ scale = Vector2(0.5, 0.5)
 text = "2352
 "
 horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

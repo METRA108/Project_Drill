@@ -13,5 +13,6 @@ func _process(delta):
 func collect(item):
 	inv.insert(item)
 
-func pickable():
-	print("pick")
+
+func pickableL():
+	print("pickL")
