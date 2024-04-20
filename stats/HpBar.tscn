@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ifb83t0ihmrd"]
 
-[ext_resource type="Texture2D" path="res://sprites/HpHeartLed.png" id="1_cnkdt"]
+[ext_resource type="Texture2D" uid="uid://c1fb4uoqrrf1p" path="res://sprites/HpHeartLed.png" id="1_cnkdt"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
