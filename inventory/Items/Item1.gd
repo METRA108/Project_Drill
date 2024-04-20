@@ -12,7 +12,7 @@ func _ready():
 func _on_area_entered(area):
 		if area.has_method("pickableR"):
 			collided(area)
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.1).timeout
 		if area.has_method("pickableL"):
 			collided(area)
 

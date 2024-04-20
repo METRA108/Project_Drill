@@ -2,15 +2,18 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 
-
 @export var inv: Inv
 
 	
 func _process(_delta):
+	var vect = rad_to_deg(get_global_mouse_position().angle())
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	var direction2 = Input.get_axis("ui_up", "ui_down")
+	var directionFM = InputEventMouseMotion
 	
+	print(vect)
+		
 	if direction:
 		velocity.x = direction * SPEED
 	else:

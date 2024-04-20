@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ifb83t0ihmrd"]
+
+[ext_resource type="Texture2D" path="res://sprites/HpHeartLed.png" id="1_cnkdt"]
+
+[node name="Panel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(18, 18)
+offset_right = 18.0
+offset_bottom = 18.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(9, 9)
+texture = ExtResource("1_cnkdt")

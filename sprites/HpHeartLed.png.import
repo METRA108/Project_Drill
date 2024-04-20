@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be08gb3kgpwif"
-path="res://.godot/imported/hart.png-b595a7dbd9978f434d1b3271289c232a.ctex"
+uid="uid://c1fb4uoqrrf1p"
+path="res://.godot/imported/HpHeartLed.png-cbc9380f0329421bba1661f4a455c0c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hart.png"
-dest_files=["res://.godot/imported/hart.png-b595a7dbd9978f434d1b3271289c232a.ctex"]
+source_file="res://sprites/HpHeartLed.png"
+dest_files=["res://.godot/imported/HpHeartLed.png-cbc9380f0329421bba1661f4a455c0c7.ctex"]
 
 [params]
 

@@ -1,43 +1,50 @@
 [gd_scene load_steps=2 format=3 uid="uid://bm6cu62ct7wby"]
 
-[ext_resource type="Texture2D" uid="uid://be08gb3kgpwif" path="res://sprites/hart.png" id="1_ci1kr"]
+[ext_resource type="PackedScene" uid="uid://ifb83t0ihmrd" path="res://stats/HpBar.tscn" id="1_bcw2v"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(2, 2)
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(3, 3)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
-offset_right = 72.0
-offset_bottom = 62.0
-
-[node name="Healthbar" type="Panel" parent="Control/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Control/NinePatchRect/Healthbar"]
-texture_filter = 1
-position = Vector2(21, 22)
-scale = Vector2(2.04167, 2.04167)
-texture = ExtResource("1_ci1kr")
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/NinePatchRect/Healthbar"]
+[node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 6.0
-offset_right = 134.0
-offset_bottom = 33.0
-value = 100.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 0
+columns = 10
+
+[node name="Panel" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel2" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel3" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel4" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel5" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel6" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel7" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel8" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel9" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2
+
+[node name="Panel10" parent="Control/GridContainer" instance=ExtResource("1_bcw2v")]
+layout_mode = 2

@@ -30,7 +30,7 @@ joint_data/0/bone_index = 1
 joint_data/0/bone2d_node = NodePath("Torso/RightArmBone")
 joint_data/1/bone_index = 2
 joint_data/1/bone2d_node = NodePath("Torso/RightArmBone/RightHandBone")
-joint_data/1/magnet_position = Vector2(-0.1, 0)
+joint_data/1/magnet_position = Vector2(0.1, 0)
 joint_data/1/use_target_rotation = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_frbil"]
@@ -48,7 +48,7 @@ joint_data/0/bone_index = 1
 joint_data/0/bone2d_node = NodePath("Torso/LeftArmBone")
 joint_data/1/bone_index = 2
 joint_data/1/bone2d_node = NodePath("Torso/LeftArmBone/LeftHandBone")
-joint_data/1/magnet_position = Vector2(0.1, 0)
+joint_data/1/magnet_position = Vector2(-0.1, 0)
 joint_data/1/use_target_rotation = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_q77ho"]
@@ -86,7 +86,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"leganim",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -123,7 +123,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"legfrontalanim",
-"speed": 9.0
+"speed": 18.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sm8ir"]
